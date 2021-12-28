@@ -10,24 +10,28 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    var secondsRemaining: Int = 0
     let eggTimes: [String: Int] = [
-        "Soft": 5,
-        "Medium": 8,
-        "Hard": 12
+        "Soft": 300,
+        "Medium": 420,
+        "Hard": 720
     ]
 
     @IBAction func hardnessSelected(_ sender: UIButton) {
         let hardness: String = sender.currentTitle!
-        switch hardness {
-        case "Soft":
-            print(eggTimes["Soft"]!)
-        case "Medium":
-            print(eggTimes["Medium"]!)
-        case "Hard":
-            print(eggTimes["Hard"]!)
-        default:
-            print("ERROR...Button title text does not match a time specified or doesn't contain text")
-        }
+        secondsRemaining = eggTimes[hardness]!
+        
+        Timer.scheduledTimer(timeInterval: 1.0,
+                             target: self,
+                             selector: #selector(updateTimer),
+                             userInfo: nil,
+                             repeats: true)
     }
     
+    @objc func updateTimer() {
+        if secondsRemaining > 0 {
+            print("\(secondsRemaining) seconds")
+            secondsRemaining -= 1
+        }
+    }
 }
