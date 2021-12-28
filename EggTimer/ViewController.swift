@@ -10,12 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var titleLabel: UILabel!
     var timer: Timer = Timer()
     var secondsRemaining: Int = 0
     let eggTimes: [String: Int] = [
-        "Soft": 300,
-        "Medium": 420,
-        "Hard": 720
+        "Soft": 3,
+        "Medium": 4,
+        "Hard": 7
     ]
 
     @IBAction func hardnessSelected(_ sender: UIButton) {
@@ -35,6 +36,9 @@ class ViewController: UIViewController {
         if secondsRemaining > 0 {
             print("\(secondsRemaining) seconds")
             secondsRemaining -= 1
+        } else {
+            timer.invalidate()
+            titleLabel.text = "DONE!"
         }
     }
 }
