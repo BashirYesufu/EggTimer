@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    var timer: Timer = Timer()
     var secondsRemaining: Int = 0
     let eggTimes: [String: Int] = [
         "Soft": 300,
@@ -18,10 +19,12 @@ class ViewController: UIViewController {
     ]
 
     @IBAction func hardnessSelected(_ sender: UIButton) {
+        timer.invalidate()
+        
         let hardness: String = sender.currentTitle!
         secondsRemaining = eggTimes[hardness]!
         
-        Timer.scheduledTimer(timeInterval: 1.0,
+        timer = Timer.scheduledTimer(timeInterval: 1.0,
                              target: self,
                              selector: #selector(updateTimer),
                              userInfo: nil,
