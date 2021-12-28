@@ -10,19 +10,21 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let softTime: Int = 5
-    let mediumTime: Int = 8
-    let hardTime: Int = 12
+    let eggTimes: [String: Int] = [
+        "Soft": 5,
+        "Medium": 8,
+        "Hard": 12
+    ]
 
     @IBAction func hardnessSelected(_ sender: UIButton) {
         let hardness: String = sender.currentTitle!
         switch hardness {
         case "Soft":
-            print(softTime)
+            print(eggTimes["Soft"]!)
         case "Medium":
-            print(mediumTime)
+            print(eggTimes["Medium"]!)
         case "Hard":
-            print(hardTime)
+            print(eggTimes["Hard"]!)
         default:
             print("ERROR...Button title text does not match a time specified or doesn't contain text")
         }
