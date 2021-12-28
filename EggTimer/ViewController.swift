@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         case "Hard":
             print(hardTime)
         default:
-            print("No recognisable egg consistency")
+            print("ERROR...Button title text does not match a time specified or doesn't contain text")
         }
     }
     
