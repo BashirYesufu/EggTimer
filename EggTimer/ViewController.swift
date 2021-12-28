@@ -15,12 +15,16 @@ class ViewController: UIViewController {
     let hardTime: Int = 12
 
     @IBAction func hardnessSelected(_ sender: UIButton) {
-        if sender.currentTitle == "Soft" {
+        let hardness: String = sender.currentTitle!
+        switch hardness {
+        case "Soft":
             print(softTime)
-        } else if sender.currentTitle == "Medium" {
+        case "Medium":
             print(mediumTime)
-        } else {
+        case "Hard":
             print(hardTime)
+        default:
+            print("No recognisable egg consistency")
         }
     }
     
